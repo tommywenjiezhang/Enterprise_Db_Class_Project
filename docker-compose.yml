@@ -1,0 +1,19 @@
+version: '3.4'
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server
+    ports:
+      - "1433:1433"
+    env_file: .env
+  notebook:
+    build:
+      context: .
+    depends_on: 
+      - db
+    env_file: .env
+    links:
+      - "db"
+    ports:
+      - "8000:8888"
+    volumes: 
+      - ".:/notebook"
