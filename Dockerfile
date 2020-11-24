@@ -29,4 +29,5 @@ COPY requirement.txt .
 RUN pip install -r requirement.txt
 COPY . .
 EXPOSE 8888
+CMD [ "python", "./sqlConnection.py" ]
 
